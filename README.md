@@ -1,7 +1,7 @@
 pieshelf
 =========
 
-pieshelf is a static gallery generator written in PHP. It's inspired by gerallery, but tries to be entirely usable as CLI tool.
+pieshelf is a static gallery generator written in PHP. It's inspired by gerallery, but tries to be entirely a CLI tool.
 
 ### Requirements
 
