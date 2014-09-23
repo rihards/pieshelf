@@ -7,6 +7,7 @@
  * 
  * These variables could come in handy though:
  *   $_directories - contains all the directors and subdirectories, which in turn contain all the images and their info
+ *   $_name - name of the gallery that can be specified by the user
  */
 
 if(PHP_SAPI !== 'cli') {
@@ -14,7 +15,7 @@ if(PHP_SAPI !== 'cli') {
 }
 ?><!DOCTYPE html>
 	<head>
-		<title><?php echo $name; ?></title>
+		<title><?php echo $_name; ?></title>
 		<meta name="robots" content="ALL">
 		<meta charset="UTF-8">
 		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" name="viewport">
