@@ -23,29 +23,28 @@ if(PHP_SAPI !== 'cli') {
 		<meta name="generator" content="pieshelf">
 	</head>
 	<body>
-		<?php
-		if(!empty($_directories)) {
-			foreach($_directories as $_directory) {
-				?>
-					<article class="directory">
-						<h1><?php echo $_directory['name']; ?></h1>
-						<ul class="images">
-						<?php
-						foreach ($_directory['images'] as $_image) {
-						?>
-							<li>
-								<a href="<?php echo $_image['full_url']; ?>">
-									<img src="<?php echo $_image['thumbnail_url']; ?>" alt="<?php echo $_image['filename']; ?>">
-								</a>
-							</li>
-						<?php
-						}
-						?>
-						</ul>
-					</article>
-				<?php
-			}
+	<?php
+	if(!empty($_directories)) {
+		foreach($_directories as $_directory) {
+			?>
+				<article class="directory">
+					<ul class="images">
+					<?php
+					foreach ($_directory['images'] as $_image) {
+					?>
+						<li>
+							<a href="<?php echo $_image['full_url']; ?>">
+								<img src="<?php echo $_image['thumbnail_url']; ?>" alt="<?php echo $_image['alt']; ?>">
+							</a>
+						</li>
+					<?php
+					}
+					?>
+					</ul>
+				</article>
+			<?php
 		}
-		?>
+	}
+	?>
 	</body>
 </html>
