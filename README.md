@@ -13,5 +13,7 @@ To generate a gallery type `php pieshelf.php --input=<directory with images> --o
 
 ### Optional Parameters
 
---name="Gallery Name"
---theme="default"
+`--name="Gallery Name"`
+`--theme=default`
+`--thumbnail=200`
+`--full=1400`
