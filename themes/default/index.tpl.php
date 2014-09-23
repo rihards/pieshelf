@@ -18,33 +18,36 @@ if(PHP_SAPI !== 'cli') {
 		<title><?php echo $_name; ?></title>
 		<meta name="robots" content="ALL">
 		<meta charset="UTF-8">
-		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" name="viewport">
+		<meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<meta name="generator" content="pieshelf">
 	</head>
 	<body>
-	<?php
-	if(!empty($_directories)) {
-		foreach($_directories as $_directory) {
-			?>
-				<article class="directory">
-					<ul class="images">
-					<?php
-					foreach ($_directory['images'] as $_image) {
-					?>
-						<li>
-							<a href="<?php echo $_image['full_url']; ?>">
-								<img src="<?php echo $_image['thumbnail_url']; ?>" alt="<?php echo $_image['alt']; ?>">
-							</a>
-						</li>
-					<?php
-					}
-					?>
-					</ul>
-				</article>
-			<?php
+	<div class="page">
+		<h1><?php echo $_name; ?></h1>
+		<?php
+		if(!empty($_directories)) {
+			foreach($_directories as $_directory) {
+				?>
+					<article class="directory">
+						<ul class="images">
+						<?php
+						foreach ($_directory['images'] as $_image) {
+						?>
+							<li>
+								<a href="<?php echo $_image['full_url']; ?>">
+									<img src="<?php echo $_image['thumbnail_url']; ?>" alt="<?php echo $_image['alt']; ?>">
+								</a>
+							</li>
+						<?php
+						}
+						?>
+						</ul>
+					</article>
+				<?php
+			}
 		}
-	}
-	?>
+		?>
+	</div>
 	</body>
 </html>
