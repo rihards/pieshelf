@@ -1,7 +1,17 @@
 pieshelf
 =========
 
-pieshelf is a static gallery generator written in PHP. It's inspired by gerallery, but tries to be entirely a CLI tool.
+pieshelf is a static gallery generator written in PHP. It's inspired by [gerallery](https://github.com/joonasfrom/gerallery), but tries to be entirely a CLI tool.
+
+### Demo
+
+You can check out a demo gallery over here: [rihards.github.io/pieshelf](http://rihards.github.io/pieshelf).
+
+The demo was generated with the default theme using the following command:
+
+`php pieshelf.php --input=/tmp/input --output=/tmp/output --thumb=180 --full=800 --name="Preview Gallery"`
+
+Images courtesy of [/r/quotesporn](http://www.reddit.com/r/quotesporn) and [/r/wallpapers](http://www.reddit.com/r/wallpapers)
 
 ### Requirements
 
@@ -9,7 +19,9 @@ pieshelf requires PHP 5.3+ and ImageMagick.
 
 ### Usage
 
-To generate a gallery type `php pieshelf.php --input=<directory with images> --output=<directory where the gallery should be generated>`
+To generate a gallery type:
+
+`php pieshelf.php --input=<directory with images> --output=<directory where the gallery should be generated>`
 
 ### Optional Parameters
 
