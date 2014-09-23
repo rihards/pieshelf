@@ -34,7 +34,6 @@ $options = getopt($shortopts, $longopts);
 # If input and/or output options are missing, let's output a message
 if(empty($options['i']) && empty($options['input'])) {
 	l('Please specify input option (directory where your images are located) with --input option.', STDERR);
-	die();
 }
 else {
 	$input = isset($options['i']) ? $options['i'] : $options['input'];
@@ -43,7 +42,6 @@ else {
 # Do the same for output, our other required option
 if(empty($options['o']) && empty($options['output'])) {
 	l('Please specify output option (directory where your gallery will be generated) with --output option.', STDERR);
-	die();
 }
 else {
 	$output = isset($options['o']) ? $options['o'] : $options['output'];
@@ -73,26 +71,22 @@ if(!empty($options['H']) || !empty($options['full'])) {
 if(!file_exists($output)) {
 	if(!mkdir($output, 0777, true)) {
 		l('Failed to create output directory, check your permissions.', STDERR);
-		die();
 	}
 }
 
 # Final check for both directories
 if(!is_readable($input) || !is_dir($input)) {
 	l('Could not read the input directory, or it\'s not a directory.', STDERR);
-	die();
 }
 
 if(!is_writable($output) || !is_dir($output)) {
 	l('Could not write to the output directory, or it\'s not a directory.', STDERR);
-	die();
 }
 
 # Check if the theme exists
-if(!is_dir(dirname(__FILE__) . '/themes/' . $theme) || !file_exists(dirname(__FILENAME__) . '/themes/' . $theme . '/index.tpl.php')) {
+if(!is_dir(dirname(__FILE__) . '/themes/' . $theme) || !file_exists(dirname(__FILE__) . '/themes/' . $theme . '/index.tpl.php')) {
 	# Not a valid theme since it doesn't exist, or the index.tpl.php doesn't exist (which is required)
 	l('Invalid theme specified.', STDERR);
-	die();
 }
 
 # Make a list of directories to go through (if we have subdirectories)
@@ -103,19 +97,16 @@ if(!empty($subdirectories)) {
 }
 
 # Setup some of the things for the gallery
-if(!mkdir($output . '/thumbs', 0777, true)) {
+if(!file_exists($output . '/thumbs') && !mkdir($output . '/thumbs', 0777, true)) {
 	l('Failed to create thumbnail directory, check your permissions.', STDERR);
-	die();
 }
 
-if(!mkdir($output . '/full', 0777, true)) {
+if(!file_exists($output . '/full') && !mkdir($output . '/full', 0777, true)) {
 	l('Failed to create full sized image directory, check your permissions.', STDERR);
-	die();
 }
 
-if(!copy(dirname(__FILENAME__) . '/themes/' . $theme . '/style.css'), $output . '/style.css')) {
+if(!file_exists($output . '/style.css') && !copy(dirname(__FILE__) . '/themes/' . $theme . '/style.css', $output . '/style.css')) {
 	l('Failed to copy stylesheet to the output directory, make sure style.css exists in your theme and check your permissions.', STDERR);
-	die();
 }
 
 # Debug output
@@ -139,5 +130,10 @@ function l($message, $method = STDOUT) {
 		$message = "\033[31m" . $message . "\033[0m";
 	}
 	fwrite($method, date('c') . ': ' . $message . PHP_EOL);
+
+	# If the message is an error, kill the script after outputing it
+	if($method === STDERR) {
+		exit(1);
+	}
 }
 
