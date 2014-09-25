@@ -26,16 +26,25 @@ To generate a gallery type:
 ### Optional Parameters
 
 `--name="Gallery Name"`
+
 This will set the title of the page in the default theme.
 
 `--theme=default`
+
 You can specify which theme you'd like, you can fine more info about making those inside themes/default/index.tpl.php.
 
 `--thumbnail=200`
+
 The size that you want your thumbnails to be at.
 
 `--full=1400`
+
 If you'd like to resize the original/full images you can specify it here.
 
 `--force=yes`
+
 With the force option you can force the script to regenerate the thumbnails and the index.html file.
+
+`--copyright="&copy; 2014"`
+
+Let's you specify a copyright for the gallery. In default theme this is used in the footer.
