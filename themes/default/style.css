@@ -49,3 +49,10 @@ ul.images li img {
 	height: auto;
 	border: 1px solid #ccc;
 }
+
+.copyright {
+	border-top: 2px solid #ff6600;
+	margin-top: 1rem;
+	padding-top: 1rem;
+	font-size: 1.4rem;
+}

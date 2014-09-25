@@ -8,6 +8,7 @@
  * These variables could come in handy though:
  *   $_directories - contains all the directors and subdirectories, which in turn contain all the images and their info
  *   $_name - name of the gallery that can be specified by the user
+ *   $_copyright - copyright option provided by the user, defaults to &copy; YEAR
  */
 
 if(PHP_SAPI !== 'cli') {
@@ -48,6 +49,7 @@ if(PHP_SAPI !== 'cli') {
 			}
 		}
 		?>
+		<p class="copyright"><?php echo $_copyright; ?></p>
 	</div>
 	</body>
 </html>

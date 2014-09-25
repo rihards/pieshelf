@@ -19,9 +19,10 @@ $theme = 'default';
 $default_thumb_height = $thumb_height = 200;
 $full_height = false;
 $force = false;
+$copyright = $_copyright = '&copy; ' . date('Y');
 
 # Let's define our CLI options, and fetch them
-$shortopts = 'i:o:n::t::h::H::f::';
+$shortopts = 'i:o:n::t::h::H::f::c::';
 $longopts = array(
 	'input:',
 	'output:',
@@ -30,6 +31,7 @@ $longopts = array(
 	'thumbnail::',
 	'full::',
 	'force::',
+	'copyright::',
 );
 $options = getopt($shortopts, $longopts);
 
@@ -57,6 +59,11 @@ if(!empty($options['n']) || !empty($options['name'])) {
 # Theme
 if(!empty($options['t']) || !empty($options['theme'])) {
 	$theme = isset($options['t']) ? $options['t'] : $options['theme'];
+}
+
+# Copyright
+if(!empty($options['c']) || !empty($options['copyright'])) {
+	$_copyright = isset($options['c']) ? $options['c'] : $options['copyright'];
 }
 
 # Thumbnail height
