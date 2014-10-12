@@ -29,7 +29,7 @@ if(PHP_SAPI !== 'cli') {
     <h1><?php echo $_name; ?></h1>
     <?php
     if(!empty($_directories)) {
-      foreach($_directories as $_directory) {
+      foreach($_directories as $_dirid => $_directory) {
         ?>
           <article class="directory">
             <ul class="images">
@@ -38,22 +38,13 @@ if(PHP_SAPI !== 'cli') {
             foreach ($_directory['images'] as $_id => $_image) {
             ?>
               <li>
-                <a href="#image-<?php echo $_id; ?>">
+                <a href="#image-<?php echo $_dirid . "-" . $_id; ?>">
                     <img src="<?php echo $_image['thumbnail_url']; ?>" alt="<?php echo $_image['alt']; ?>">
                     <span><?php echo $_image['alt']; ?></span>
                 </a>
-                <div class="image-overlay" id="image-<?php echo $_id; ?>">
+                <div class="image-overlay" id="image-<?php echo $_dirid . "-" . $_id; ?>">
                     <img src="<?php echo $_image['full_url']; ?>" alt="<?php echo $_image['alt']; ?>">
-                    <div>
-                        <h3><?php echo $_image['alt']; ?></h3>
-                        <?php if($_id > 1) { ?>
-                          <a href="#image-<?php echo $_id-1; ?>" class="image-prev">Prev</a>
-                        <?php } ?>
-                        <?php if($count < $_id) { ?>
-                          <a href="#image-<?php echo $_id+1; ?>" class="image-next">Next</a>
-                        <?php } ?>
-                    </div>
-                    <a href="#page" class="image-close">&multiply;</a>
+                    <a href="#page" class="image-close">&cross;</a>
                 </div>
               </li>
             <?php
