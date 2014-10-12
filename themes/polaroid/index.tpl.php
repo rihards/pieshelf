@@ -25,7 +25,7 @@ if(PHP_SAPI !== 'cli') {
     <meta name="generator" content="pieshelf">
   </head>
   <body>
-  <div class="page">
+  <div class="page" id="page">
     <h1><?php echo $_name; ?></h1>
     <?php
     if(!empty($_directories)) {
@@ -34,12 +34,27 @@ if(PHP_SAPI !== 'cli') {
           <article class="directory">
             <ul class="images">
             <?php
-            foreach ($_directory['images'] as $_image) {
+            $count = count($_directory['images']);
+            foreach ($_directory['images'] as $_id => $_image) {
             ?>
               <li>
-                <a href="<?php echo $_image['full_url']; ?>">
-                  <img src="<?php echo $_image['thumbnail_url']; ?>" alt="<?php echo $_image['alt']; ?>">
+                <a href="#image-<?php echo $_id; ?>">
+                    <img src="<?php echo $_image['thumbnail_url']; ?>" alt="<?php echo $_image['alt']; ?>">
+                    <span><?php echo $_image['alt']; ?></span>
                 </a>
+                <div class="image-overlay" id="image-<?php echo $_id; ?>">
+                    <img src="<?php echo $_image['full_url']; ?>" alt="<?php echo $_image['alt']; ?>">
+                    <div>
+                        <h3><?php echo $_image['alt']; ?></h3>
+                        <?php if($_id > 1) { ?>
+                          <a href="#image-<?php echo $_id-1; ?>" class="image-prev">Prev</a>
+                        <?php } ?>
+                        <?php if($count < $_id) { ?>
+                          <a href="#image-<?php echo $_id+1; ?>" class="image-next">Next</a>
+                        <?php } ?>
+                    </div>
+                    <a href="#page" class="image-close">&multiply;</a>
+                </div>
               </li>
             <?php
             }
