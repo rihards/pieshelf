@@ -7,6 +7,10 @@ html {
   font-weight: 300;
 }
 
+body {
+  padding: 2rem;
+}
+
 .page h1 {
   font-family: "Enriqueta", serif;
   font-size: 4rem;
@@ -14,4 +18,114 @@ html {
   line-height: 5rem;
   margin: 1rem 0 3rem;
   text-align: center;
+}
+
+.directory {
+  clear: left;
+}
+
+.images {
+  width: 94%;
+  margin: 0 auto;
+  list-style: none none;
+}
+
+.images li {
+  float: left;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.images li > a {
+  display: block;
+  height: auto;
+  position: relative;
+  padding: 1rem;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+.images li > a img {
+  display: block;
+}
+
+.images li > a span {
+  position: absolute;
+  bottom: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+  color: rgba(27,54,81,0.8);
+  text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+  font-size: 1.6rem;
+  line-height: 3rem;
+  opacity: 0;
+  background: #cdcdcd;
+  transition: opacity 0.3s linear;
+}
+
+.images li > a:hover span {
+  opacity: 1;
+}
+
+.image-overlay {
+  left: 0; top: 0;
+  width: 0; height: 0;
+  position: fixed;
+  overflow: hidden;
+  padding: 0;
+  z-index: 200;
+  text-align: center;
+}
+
+.image-overlay > div {
+  position: relative;
+  color: rgba(27,54,81,0.8);
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto 0 auto;
+  text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+}
+
+.image-overlay .image-close {
+  cursor: pointer;
+  color: #fff;
+  background: #605F61;
+  border: 1px solid #AEAEAE;
+  border-radius: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 0;
+  padding: 1rem 0.3rem;
+  position: absolute;
+  top: 1rem;
+  margin-left: -1.4rem;
+  text-decoration: none;
+}
+
+.image-overlay .image-close:before {
+  content: "×";
+}
+
+.image-overlay img {
+  max-height: 100%;
+  position: relative;
+  opacity: 0;
+  box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+  transition: opacity 0.5s linear;
+}
+
+.image-overlay:target {
+  width: auto;
+  height: auto;
+  bottom: 0; right: 0;
+  padding-top: 2rem;
+}
+
+.image-overlay:target img, .image-overlay:target a.image-close {
+  opacity: 1;
+}
+
+.copyright {
+  clear: both;
 }
