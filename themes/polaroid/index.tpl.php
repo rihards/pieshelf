@@ -21,6 +21,7 @@ if(PHP_SAPI !== 'cli') {
     <meta charset="UTF-8">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
     <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Enriqueta:400,700" rel="stylesheet" type="text/css">
     <meta name="generator" content="pieshelf">
   </head>
   <body>
