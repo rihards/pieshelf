@@ -44,7 +44,7 @@ if(PHP_SAPI !== 'cli') {
                 </a>
                 <div class="image-overlay" id="image-<?php echo $_dirid . "-" . $_id; ?>">
                     <img src="<?php echo $_image['full_url']; ?>" alt="<?php echo $_image['alt']; ?>">
-                    <a href="#page" class="image-close">&cross;</a>
+                    <a href="#page" class="image-close"></a>
                 </div>
               </li>
             <?php
